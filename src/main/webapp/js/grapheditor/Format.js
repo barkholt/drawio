@@ -3347,6 +3347,7 @@ TextFormatPanel.prototype.addFont = function(container)
 		}
 	}, true);
 	
+	// Maybe manipulate stepper here?
 	var stepper = this.createStepper(input, inputUpdate, 1, 10, true, Menus.prototype.defaultFontSize);
 	stepper.style.display = input.style.display;
 	stepper.style.marginTop = '4px';
@@ -3540,6 +3541,13 @@ TextFormatPanel.prototype.addFont = function(container)
 		null, null, null, ui.actions.get('formattedText'));
 	htmlOpt.style.fontWeight = 'bold';
 	extraPanel.appendChild(htmlOpt);
+
+	var isometricOpt = this.createCellOption("Isometric text", 'isometric', 0,
+		null, null, null, ui.actions.get('isometricText'));
+	isometricOpt.style.fontWeight = 'bold';
+	extraPanel.appendChild(isometricOpt);
+
+
 	
 	var spacingPanel = this.createPanel();
 	spacingPanel.style.paddingTop = '10px';

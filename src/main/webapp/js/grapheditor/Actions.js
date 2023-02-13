@@ -982,6 +982,11 @@ Actions.prototype.init = function()
 			graph.getModel().endUpdate();
 		}
 	});
+	this.addAction('isometricText', function()
+	{
+		console.log("I am here!!! in action");
+		///graph.snapCellsToGrid(graph.getSelectionCells(), graph.gridSize);
+	});
 	this.addAction('wordWrap', function()
 	{
     	var state = graph.getView().getState(graph.getSelectionCell());

@@ -1625,8 +1625,8 @@
 				}
 				else
 				{
-					this.addMenuItems(menu, ['-', 'keyboardShortcuts',
-						'quickStart', 'support', '-', 'about'], parent);
+					this.addMenuItems(menu, ['-', 'keyboardShortcuts'/*,
+						'quickStart', 'support', '-', 'about'*/], parent);
 				}
 			}
 			

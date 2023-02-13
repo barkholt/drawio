@@ -101,7 +101,7 @@
 	 * 
 	 * https://www.diagrams.net/doc/faq/supported-url-parameters
 	 */
-	Sidebar.prototype.enabledLibraries = null;
+	Sidebar.prototype.enabledLibraries = null;//[];
 	
 	/**
 	 * Maximum number of custom libraries to preload into the search index.
@@ -1102,6 +1102,7 @@
 		}
 		
 		this.addGeneralPalette(this.customEntries == null);
+		// Remove elements from default side bar here
 		this.addMiscPalette(false);	
 		this.addAdvancedPalette(false);
 		this.addBasicPalette();
@@ -1211,20 +1212,20 @@
 				  'Palm Treo', 'Signaltower off', 'Signaltower on']);
 		this.setCurrentSearchEntryLibrary();
 
-		this.addFlowchartPalette();
+		//this.addFlowchartPalette();
 		this.addActiveDirectoryPalette();
 		this.addAndroidPalette();
 		this.addAtlassianPalette();
 		this.addBootstrapPalette();
 		this.addDFDPalette();
-		this.addErPalette();
+		//this.addErPalette();
 		this.addIos7Palette();
 		this.addIosPalette();
 		this.addKubernetesPalette();
 		this.addMockupPalette();
 		this.addSitemapPalette();
 		this.addUml25Palette();
-		this.addUmlPalette(false);
+		//this.addUmlPalette(false);
 		this.addAlliedTelesisPalette();
 		this.addAWS3Palette();
 		this.addAWS4bPalette();

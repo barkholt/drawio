@@ -1178,7 +1178,7 @@ App.main = function(callback, createUi)
 		};
 
 		// Sends load event if configuration is requested and waits for configure message
-		if (urlParams['configure'] == '1')
+		if (false && urlParams['configure'] == '1')
 		{
 			var op = window.opener || window.parent;
 			
@@ -1221,7 +1221,7 @@ App.main = function(callback, createUi)
 		}
 		else
 		{
-			if (Editor.config == null)
+			/*if (Editor.config == null)
 			{
 				// Loads configuration from global scope or local storage
 				if (window.DRAWIO_CONFIG != null)
@@ -1278,7 +1278,20 @@ App.main = function(callback, createUi)
 						}
 					}
 				}
-			}
+			}*/
+
+			Editor.configure(
+				{
+					presetColors: ["ff0000", "00ff00", "0000ff"],
+					defaultColors: ["ffff00", "00ffff", "ff00ff"],
+					defaultColorSchemes: [[{fill: '', stroke: ''}, {fill: '#ff0000', stroke: '#00ff00', font: '#333333'},
+					{fill: '#dae8fc', stroke: '#6c8ebf'}, {fill: '#d5e8d4', stroke: '#82b366'},
+					{fill: '#ffe6cc', stroke: '#d79b00'}, {fill: '#fff2cc', stroke: '#d6b656'},
+					{fill: '#f8cecc', stroke: '#b85450'}, {fill: '#e1d5e7', stroke: '#9673a6'}]]
+				
+				});
+			mxSettings.load();
+
 			
 			doMain();
 		}
