@@ -367,7 +367,7 @@ Sidebar.prototype.createMoreShapes = function()
 		mxEvent.consume(evt);
 	}));
 	
-	div.appendChild(title);
+	//div.appendChild(title);
 	
 	return div;
 };
@@ -679,6 +679,7 @@ Sidebar.prototype.addEntries = function(images)
 			var data = img.data;
 			var tags = (img.title != null) ? img.title : '';
 			
+
 			if (img.tags != null)
 			{
 				tags += ' ' + img.tags;
@@ -705,7 +706,6 @@ Sidebar.prototype.addEntries = function(images)
 				this.addEntry(tags, mxUtils.bind(this, function()
 				{
 					var cells = this.editorUi.stringToCells(Graph.decompress(img.xml));
-
 					return this.createVertexTemplateFromCells(
 						cells, img.w, img.h, img.title || '', true, false, true);
 				}));
@@ -3816,7 +3816,7 @@ Sidebar.prototype.addPaletteFunctions = function(id, title, expanded, fns)
  * Adds the given palette.
  */
 Sidebar.prototype.addPalette = function(id, title, expanded, onInit)
-{
+{	
 	var elt = this.createTitle(title);
 	this.appendChild(elt);
 	

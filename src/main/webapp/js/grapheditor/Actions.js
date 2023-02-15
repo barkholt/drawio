@@ -986,6 +986,69 @@ Actions.prototype.init = function()
 	{
 		console.log("I am here!!! in action");
 		///graph.snapCellsToGrid(graph.getSelectionCells(), graph.gridSize);
+
+
+
+
+		graph.stopEditing();
+
+		var style = graph.getCommonStyle(graph.getSelectionCells());
+		var value = (mxUtils.getValue(style, 'isometricText', '0') == '1') ? null : '1';
+		
+		console.log("style", style, "value", value);
+
+		graph.getModel().beginUpdate();
+		try
+		{
+			var cells = graph.getEditableCells(graph.getSelectionCells());
+			
+			for (var i = 0; i < cells.length; i++)
+			{
+				state = graph.getView().getState(cells[i]);
+				
+				if (state != null)
+				{
+					var isometricText = mxUtils.getValue(state.style, 'isometricText', '0');
+					
+					console.log("isometricText", isometricText);
+
+					if (isometricText == '1' && value == null)
+			    	{
+			    		var label = graph.convertValueToString(state.cell);	    			
+						graph.cellLabelChanged(state.cell, label);
+						graph.setCellStyles('isometricText', value, [cells[i]]);
+			    	}
+					else if (isometricText == '0' && value == '1')
+			    	{
+			    		// Converts HTML tags to text
+			    		var label = graph.convertValueToString(state.cell);
+			    		
+			    		
+			    		
+			    		graph.cellLabelChanged(state.cell, label);
+			    		graph.setCellStyles('isometricText', value, [cells[i]]);
+			    	}
+				}
+			}
+
+			ui.fireEvent(new mxEventObject('styleChanged', 'keys', ['isometricText'],
+				'values', [(value != null) ? value : '0'], 'cells', cells));
+		}
+		finally
+		{
+			graph.getModel().endUpdate();
+		}
+
+
+
+
+
+
+
+
+
+
+
 	});
 	this.addAction('wordWrap', function()
 	{

@@ -922,6 +922,7 @@
 		this.addSearchPalette(true);
 		
 		// Adds custom sections first
+		console.log("this.customEntries:", this.customEntries);
 		if (this.customEntries != null)
 		{
 			var preloadCount = 0;
@@ -938,6 +939,9 @@
 					{
 						(mxUtils.bind(this, function(lib)
 						{
+
+							console.log("load customer entries lib:", lib);
+
 							var data = null;
 							var error = null;
 							var content = null;
@@ -980,7 +984,7 @@
 									}
 								}
 							});
-							
+					
 							if (lib.data == null && lib.url != null && (!lib.preload && preloadCount >= this.maxPreloadCount))
 							{
 								this.addPalette(entry.id + '.' + k, this.editorUi.getResource(lib.title),
@@ -1033,10 +1037,16 @@
 								}));
 							}
 							else
-							{							
+							{				
+								console.log(`This is where I would like to be. About to look up: '${lib.title}'`);			
+								/*let titleX = this.editorUi.getResource(lib.title);
+								if(!titleX) 
+									titleX = lib.title;*/
+
 								this.addPalette(entry.id + '.' + k, this.editorUi.getResource(lib.title),
-									false, mxUtils.bind(this, function(c, t)
+									lib.expand === true, mxUtils.bind(this, function(c, t)
 								{
+									console.log("addPalette, callback", c, t);
 									content = c;
 									title = t;
 									barrier();
@@ -1057,7 +1067,7 @@
 									
 									if (!this.editorUi.editor.isCorsEnabledForUrl(url))
 									{
-										url = PROXY_URL + '?url=' + encodeURIComponent(url);
+										//url = PROXY_URL + '?url=' + encodeURIComponent(url);
 									}
 									
 									this.editorUi.editor.loadUrl(url, mxUtils.bind(this, function(temp)
@@ -1069,6 +1079,7 @@
 											if (doc.documentElement.nodeName == 'mxlibrary')
 											{
 												data = JSON.parse(mxUtils.getTextContent(doc.documentElement));
+												console.log("parsed data from klima", data);
 												this.addEntries(data);
 												barrier();
 											}
@@ -1104,8 +1115,8 @@
 		this.addGeneralPalette(this.customEntries == null);
 		// Remove elements from default side bar here
 		this.addMiscPalette(false);	
-		this.addAdvancedPalette(false);
-		this.addBasicPalette();
+		//this.addAdvancedPalette(false);
+		//this.addBasicPalette();
 		this.addStencilPalette('arrows', mxResources.get('arrows'), dir + '/arrows.xml',
 				';html=1;' + mxConstants.STYLE_VERTICAL_LABEL_POSITION + '=bottom;' + mxConstants.STYLE_VERTICAL_ALIGN + '=top;' + mxConstants.STYLE_STROKEWIDTH + '=2;strokeColor=#000000;',
 				null, null, null, null, null, 'arrows');
@@ -1213,7 +1224,7 @@
 		this.setCurrentSearchEntryLibrary();
 
 		//this.addFlowchartPalette();
-		this.addActiveDirectoryPalette();
+		//this.addActiveDirectoryPalette();
 		this.addAndroidPalette();
 		this.addAtlassianPalette();
 		this.addBootstrapPalette();

@@ -1245,3 +1245,4 @@ errCreateConfigFile=Error creating "configuration.json" file, please check you h
 errSetPageRestr=Error setting page restrictions
 notAdmin4Team=You are not an admin for this team
 configUpdated=Configuration updated, restart the editor if you want to work with last configuration.
+klimafonden=Hej

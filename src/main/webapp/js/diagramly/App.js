@@ -1282,6 +1282,26 @@ App.main = function(callback, createUi)
 
 			Editor.configure(
 				{
+
+					libraries: [ 
+						{
+							title: {main: "Klimafonden"},
+							entries:
+							[ 
+								{
+									id: "id_test",
+									title: {main: "Klimafonden"},
+									libs:[
+										{title: {main: "Klimafonden"}, url: "/Klimafonden.xml"}
+									]
+								}
+							]
+						} 
+					],
+					//defaultCustomLibraries: [],
+					//enableCustomLibraries: [],
+
+
 					presetColors: ["ff0000", "00ff00", "0000ff"],
 					defaultColors: ["ffff00", "00ffff", "ff00ff"],
 					defaultColorSchemes: [[{fill: '', stroke: ''}, {fill: '#ff0000', stroke: '#00ff00', font: '#333333'},
