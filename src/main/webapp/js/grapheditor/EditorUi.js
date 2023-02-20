@@ -92,7 +92,7 @@ EditorUi = function(editor, container, lightbox)
 		var styles = ['rounded', 'shadow', 'glass', 'dashed', 'dashPattern', 'labelBackgroundColor',
 			'labelBorderColor', 'comic', 'sketch', 'fillWeight', 'hachureGap', 'hachureAngle', 'jiggle',
 			'disableMultiStroke', 'disableMultiStrokeFill', 'fillStyle', 'curveFitting',
-			'simplification', 'sketchStyle', 'pointerEvents', 'strokeColor', 'strokeWidth'];
+			'simplification', 'sketchStyle', 'pointerEvents', 'strokeColor', 'strokeWidth', 'isometric'];
 		var connectStyles = ['shape', 'edgeStyle', 'curved', 'rounded', 'elbow', 'jumpStyle', 'jumpSize',
 			'comic', 'sketch', 'fillWeight', 'hachureGap', 'hachureAngle', 'jiggle',
 			'disableMultiStroke', 'disableMultiStrokeFill', 'fillStyle', 'curveFitting',
@@ -830,6 +830,8 @@ EditorUi = function(editor, container, lightbox)
 				{
 					var common = mxUtils.indexOf(valueStyles, keys[i]) >= 0;
 
+					console.log(keys[i],"=",values[i]);
+
 					// Ignores transparent stroke colors
 					if (keys[i] != 'strokeColor' || (values[i] != null && values[i] != 'none'))
 					{
@@ -886,6 +888,12 @@ EditorUi = function(editor, container, lightbox)
 								}
 							}
 						}
+					}
+					if (keys[i] === 'isometric') {
+						console.log("Turn on isometric", values[i], typeof(values[i]));
+						console.log(graph);
+						console.log(cells);
+
 					}
 				}
 			}
@@ -4505,7 +4513,7 @@ EditorUi.prototype.updateActionStates = function()
 	               'editStyle', 'editTooltip', 'editLink', 'backgroundColor', 'borderColor',
 	               'edit', 'toFront', 'toBack', 'solid', 'dashed', 'pasteSize',
 	               'dotted', 'fillColor', 'gradientColor', 'shadow', 'fontColor',
-	               'formattedText', 'rounded', 'toggleRounded', 'strokeColor',
+	               'formattedText', 'isometricText', 'rounded', 'toggleRounded', 'strokeColor',
 				   'sharp', 'snapToGrid'];
 	
 	for (var i = 0; i < actions.length; i++)

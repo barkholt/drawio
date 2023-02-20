@@ -418,6 +418,21 @@
 			cursor:pointer;
 			margin:5px;
 		}
+
+		g[isometric=left] > foreignObject > div > div > div {
+ 		   transform: rotateX(50deg) rotateY(0deg) rotateZ(-42deg) !important;
+		}
+		g[isometric=right] > foreignObject > div > div > div {
+ 		   transform: rotateX(50deg) rotateY(0deg) rotateZ(42deg) !important;
+		}
+
+		g[isometric=left] {
+ 		   transform: rotate() !important;
+		}
+		g[isometric=right] {
+ 		   transform: rotate() !important;
+		}
+
 	</style>
 	<!-- Workaround for binary XHR in IE 9/10, see App.loadUrl -->
 	<!--[if (IE 9)|(IE 10)]><!-->

@@ -4663,7 +4663,7 @@ LucidImporter = {};
 
 		s += (!hasStyle(style, 'whiteSpace') ? 'whiteSpace=wrap;' : '') + 
 		  (noLblStyle? (hasStyle(style, 'overflow')? '' : 'overflow=block;blockSpacing=1;') + 
-			(hasStyle(style, 'html')? '' : 'html=1;') + 'fontSize=' + defaultFontSize + ';' +
+			(hasStyle(style, 'html')? '' : 'html=1;') + (hasStyle(style, 'isometricText')? '' : 'isometricText=1;') + 'fontSize=' + defaultFontSize + ';' +
 			gFontFamilyStyle
 			:
 			addStyle(mxConstants.STYLE_FONTSIZE, style, properties, action, cell) +	
@@ -13808,6 +13808,11 @@ LucidImporter = {};
 			v.style += 'html=1;';
 		}
 		
+		if (v.style && v.style.indexOf('isometricText') < 0)
+		{
+			v.style += 'isometricText=1;';
+		}
+
 		if (p.Title && p.Title.t && p.Text && p.Text.t)
 		{
 			try

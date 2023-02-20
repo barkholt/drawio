@@ -5889,9 +5889,25 @@
 	var mxSvgCanvas2DUpdateTextNodes = mxSvgCanvas2D.prototype.updateTextNodes;
 	mxSvgCanvas2D.prototype.updateTextNodes = function(x, y, w, h, align, valign, wrap, overflow, clip, rotation, g)
 	{
-		console.log(arguments);
+		console.log("I AM GOING TO UPDATE TEXT NODES!!", arguments);
+		console.trace();
+
 		mxSvgCanvas2DUpdateTextNodes.apply(this, arguments);
+
+
 		Graph.processFontAttributes(g);
+
+		console.log(this, g);
+		console.log(typeof(rotation), rotation);
+		if (rotation === 359) {
+			//g.setAttribute("isometric", "left");
+			g.setAttribute("transform", "");		
+		} else if (rotation === 1) {
+			//g.setAttribute("isometric", "right");
+			g.setAttribute("transform", g.getAttribute("transform") + " rotate(50 0 -42)");
+		} else {
+			g.setAttribute("isometric", "");
+		}
 	};
 	
 	/**

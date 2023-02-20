@@ -993,7 +993,7 @@ Actions.prototype.init = function()
 		graph.stopEditing();
 
 		var style = graph.getCommonStyle(graph.getSelectionCells());
-		var value = (mxUtils.getValue(style, 'isometricText', '0') == '1') ? null : '1';
+		var value = (mxUtils.getValue(style, 'isometric', '0') == '1') ? null : '1';
 		
 		console.log("style", style, "value", value);
 
@@ -1008,15 +1008,19 @@ Actions.prototype.init = function()
 				
 				if (state != null)
 				{
-					var isometricText = mxUtils.getValue(state.style, 'isometricText', '0');
+					var isometricText = mxUtils.getValue(state.style, 'isometric', '0');
 					
-					console.log("isometricText", isometricText);
+					console.log("isometric", isometricText);
 
 					if (isometricText == '1' && value == null)
 			    	{
 			    		var label = graph.convertValueToString(state.cell);	    			
 						graph.cellLabelChanged(state.cell, label);
-						graph.setCellStyles('isometricText', value, [cells[i]]);
+						graph.setCellStyles('isometric', value, [cells[i]]);
+
+						console.log("look for setClassnames or something", graph);
+						graph.setAttributeForCell(cells[i], "isometric", "1" );
+
 			    	}
 					else if (isometricText == '0' && value == '1')
 			    	{
@@ -1026,26 +1030,18 @@ Actions.prototype.init = function()
 			    		
 			    		
 			    		graph.cellLabelChanged(state.cell, label);
-			    		graph.setCellStyles('isometricText', value, [cells[i]]);
+			    		graph.setCellStyles('isometric', value, [cells[i]]);
 			    	}
 				}
 			}
 
-			ui.fireEvent(new mxEventObject('styleChanged', 'keys', ['isometricText'],
+			ui.fireEvent(new mxEventObject('styleChanged', 'keys', ['isometric'],
 				'values', [(value != null) ? value : '0'], 'cells', cells));
 		}
 		finally
 		{
 			graph.getModel().endUpdate();
 		}
-
-
-
-
-
-
-
-
 
 
 
