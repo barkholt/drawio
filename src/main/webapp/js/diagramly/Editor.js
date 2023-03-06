@@ -5900,11 +5900,11 @@
 		console.log(this, g);
 		console.log(typeof(rotation), rotation);
 		if (rotation === 359) {
-			//g.setAttribute("isometric", "left");
-			g.setAttribute("transform", "");		
+			g.setAttribute("isometric", "left");
+			//g.setAttribute("transform", "");		
 		} else if (rotation === 1) {
-			//g.setAttribute("isometric", "right");
-			g.setAttribute("transform", g.getAttribute("transform") + " rotate(50 0 -42)");
+			g.setAttribute("isometric", "right");
+			//g.setAttribute("transform", g.getAttribute("transform") + " rotate(50 0 -42)");
 		} else {
 			g.setAttribute("isometric", "");
 		}

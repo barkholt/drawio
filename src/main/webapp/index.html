@@ -54,6 +54,8 @@
 			return result;
 		})();
 		
+		window.debug = urlParams.debug === "1"; 
+
 		// Forces CDN caches by passing URL parameters via URL hash
 		if (window.location.hash != null && window.location.hash.substring(0, 2) == '#P')
 		{
