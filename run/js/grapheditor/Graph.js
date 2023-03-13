@@ -8984,16 +8984,16 @@ if (typeof mxVertexHandler !== 'undefined')
 				var constraints = mxUtils.getValue(terminal.style, 'points', null);
 				console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints);
 				
-				if (true || constraints != null)
+				if (terminal.style.isometric === "true")
 				{
 					// Requires an array of arrays with x, y (0..1), an optional
 					// [perimeter (0 or 1), dx, and dy] eg. points=[[0,0,1,-10,10],[0,1,0],[1,1]]
 					var result = [];
-					
+				
 
 					try
 					{
-						
+		
 
 
 

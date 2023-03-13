@@ -351,6 +351,7 @@
 	 */
 	Sidebar.prototype.isEntryVisible = function(key)
 	{
+		console.log("isEntryVisible", key);
 		if (key == '.scratchpad')
 		{
 			return this.editorUi.scratchpad != null;
@@ -407,6 +408,7 @@
 	 */
 	Sidebar.prototype.showEntries = function(entries, remember, force)
 	{
+		console.log("Sidebar.prototype.showEntries", this, entries, remember, force);
 		var all = [];
 		
 		if (remember)
@@ -417,7 +419,7 @@
 		
 		if (entries != null && (force || entries.length > 0))
 		{
-			all.push(entries);
+			all.push(...entries);
 		}
 		else 
 		{
@@ -433,6 +435,7 @@
 			// links can be created to show just the specifies libraries
 			if (!done)
 			{
+				console.log("showEntries, what gets added", mxSettings, mxSettings.settings, mxSettings.getLibraries(), this.defaultLibraries);
 				if (mxSettings != null && mxSettings.settings != null) 
 				{
 					all.push(mxSettings.getLibraries());
@@ -444,6 +447,8 @@
 			}
 		}
 		
+		//all.push("id_chemicals");
+
 		// Merges array of semicolon separated strings into a single array
 		var temp = all.join(';').split(';');
 
@@ -454,7 +459,7 @@
 		{
 			visible[this.libAliases[temp[i]] || temp[i]] = true; 
 		}
-		
+		console.log("showEntries, visible", temp, visible);
 		for (var i = 0; i < this.configuration.length; i++)
 		{
 			// Search has separate switch in Extras menu
@@ -485,7 +490,7 @@
 						{
 							libs.push(entry.id + '.' + k);
 						}
-						
+						console.log("showEntries, customEntries", libs, visible[entry.id], visible);
 						this.showPalettes('', libs, visible[entry.id]);
 					}
 				}
@@ -940,7 +945,7 @@
 						(mxUtils.bind(this, function(lib)
 						{
 
-							console.log("load customer entries lib:", lib);
+							console.log("load custom entries lib:", lib);
 
 							var data = null;
 							var error = null;
@@ -960,6 +965,7 @@
 							
 							var barrier = mxUtils.bind(this, function()
 							{
+								console.log("barrier in sidebar.js released", content, title);
 								if (content != null && title != null)
 								{
 									if (error != null)
@@ -1038,7 +1044,7 @@
 							}
 							else
 							{				
-								console.log(`This is where I would like to be. About to look up: '${lib.title}'`);			
+								console.log(`This is where I would like to be. About to look up:`, lib);			
 								/*let titleX = this.editorUi.getResource(lib.title);
 								if(!titleX) 
 									titleX = lib.title;*/
@@ -1046,7 +1052,6 @@
 								this.addPalette(entry.id + '.' + k, this.editorUi.getResource(lib.title),
 									lib.expand === true, mxUtils.bind(this, function(c, t)
 								{
-									console.log("addPalette, callback", c, t);
 									content = c;
 									title = t;
 									barrier();
@@ -1278,7 +1283,12 @@
 		this.addWebLogosPalette();
 		this.addSignsPalette(signs, dir);
 		// LATER: Check if conflicts with restore libs after loading file
-		this.showEntries();
+		this.showEntries([
+			"id_chemicals", 
+			"id_facilities",
+			"id_machines",
+			"id_rawmaterials",
+			"id_water"]);
 		
 		if (this.createdSearchIndex != null)
 		{

@@ -3210,6 +3210,7 @@
 	 */
 	EditorUi.prototype.loadLibrary = function(file, expand)
 	{
+		console.log("EditorUi.prototype.loadLibrary", file, expand);
 		var doc = mxUtils.parseXml(file.getData());
 		
 		if (doc.documentElement.nodeName == 'mxlibrary')
@@ -3794,6 +3795,9 @@
 			{
 				data = this.convertDataUri(data);
 				var s = 'shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;';
+
+				if (img.isometric === true)
+					s += "isometric=true;"
 				
 				if (img.aspect == 'fixed')
 				{
@@ -3809,8 +3813,17 @@
 				
 				if (cells.length > 0)
 				{
-					content.appendChild(this.sidebar.createVertexTemplateFromCells(
-						cells, img.w, img.h, img.title || '', true, null, true));
+					if (img.isometric === true)
+						cells[0].style = "isometric=true;"+cells[0].style
+
+
+
+					let vertexTemplate = this.sidebar.createVertexTemplateFromCells(
+							cells, img.w, img.h, img.title || '', true, null, true);
+
+					console.log("vertexTemplate", vertexTemplate, cells);
+
+					content.appendChild(vertexTemplate);
 				}
 			}
 		}

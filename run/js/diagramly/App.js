@@ -1349,9 +1349,12 @@ App.main = function(callback, createUi)
 								}
 							]
 						}
-					],
-					//defaultCustomLibraries: [],
-					//enableCustomLibraries: [],
+					],	
+					//enabledLibraries: ["id_chemicals.0"],
+					//defaultLibraries: ["id_chemicals.0"],
+					//customLibraries: ["id_chemicals.0"],
+					//defaultCustomLibraries: ["id_chemicals.0"],
+					enableCustomLibraries: true,
 
 
 					presetColors: ["ff0000", "00ff00", "0000ff"],
@@ -1365,6 +1368,7 @@ App.main = function(callback, createUi)
 				
 				});
 			mxSettings.load();
+			//mxSettings.addCustomLibrary("id_chemicals.0");
 
 			
 			doMain();
@@ -5655,9 +5659,12 @@ App.prototype.restoreLibraries = function()
 			}
 		}
 	};
-
+	console.log("mxSettings.getCustomLibraries()",mxSettings.getCustomLibraries());
 	addLibs(mxSettings.getCustomLibraries());
 	addLibs((urlParams['clibs'] || '').split(';'));
+	
+//	addLibs(["id_checmicals"]);
+	
 	this.loadLibraries(checked);
 };
 
@@ -5666,6 +5673,7 @@ App.prototype.restoreLibraries = function()
  */
 App.prototype.loadLibraries = function(libs, done)
 {
+	console.log("App.prototype.loadLibraries", libs, done);
 	if (this.sidebar != null)
 	{
 		if (this.loadedLibraries == null)
@@ -5719,6 +5727,7 @@ App.prototype.loadLibraries = function(libs, done)
 				
 				(mxUtils.bind(this, function(id, index)
 				{
+					console.log("loading library", id, index);
 					if (id != null && id.length > 0 && this.loadedLibraries[id] == null &&
 						this.sidebar.palettes[id] == null)
 					{
