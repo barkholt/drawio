@@ -8982,14 +8982,20 @@ if (typeof mxVertexHandler !== 'undefined')
 			if (terminal != null)
 			{
 				var constraints = mxUtils.getValue(terminal.style, 'points', null);
-				console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints);
 				
-				if (terminal.style.isometric === "true")
+				let parentIsometric = terminal.cell.parent.style ? terminal.cell.parent.style.indexOf("isometric") !== -1 : false;
+				
+				console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints, parentIsometric);
+				
+
+				if (terminal.style.isometric === "true" || parentIsometric)
 				{
 					// Requires an array of arrays with x, y (0..1), an optional
 					// [perimeter (0 or 1), dx, and dy] eg. points=[[0,0,1,-10,10],[0,1,0],[1,1]]
 					var result = [];
 				
+					if (terminal.style.shape === "label")
+						return result;
 
 					try
 					{
@@ -9024,10 +9030,10 @@ if (typeof mxVertexHandler !== 'undefined')
 								c.push([baseLine[i][0], baseLine[i][1], baseLine[i][2]]);
 							}
 						};
-						addLine(0.05, 0.78, 0.42, 0.98, 5);
+						addLine(0.05-0.11, 0.78+0.05, 0.42-0.11, 0.98+0.05, 5);
 						addLine(0.05+0.52, 0.78-0.41, 0.42+0.52, 0.98-0.41, 5);
 						addLine(0.03, 0.59, 0.44, 0.37, 5);
-						addLine(0.03+0.67, 0.59+0.50, 0.44+0.67, 0.37+0.50, 5);
+						addLine(0.03+0.57, 0.59+0.40, 0.44+0.57, 0.37+0.40, 5);
 						//var c = JSON.parse(constraints);
 						
 						for (var i = 0; i < c.length; i++)

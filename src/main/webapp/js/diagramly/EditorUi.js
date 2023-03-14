@@ -3813,8 +3813,15 @@
 				
 				if (cells.length > 0)
 				{
-					if (img.isometric === true)
-						cells[0].style = "isometric=true;"+cells[0].style
+					if (img.isometric === true) {
+						cells[0].style = "isometric=true;"+cells[0].style;
+						cells[0].isometric = true;
+
+						for (let c = 0; c < cells[0].children.lenght; c++) {
+							cells[0].children[c].style = "isometric=true;"+cells[0].children[c].style;
+						}
+
+					}
 
 
 
