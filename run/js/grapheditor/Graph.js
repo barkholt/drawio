@@ -8985,10 +8985,10 @@ if (typeof mxVertexHandler !== 'undefined')
 				
 				let parentIsometric = terminal.cell.parent.style ? terminal.cell.parent.style.indexOf("isometric") !== -1 : false;
 				
-				console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints, parentIsometric);
+				console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints, parentIsometric, terminal.cell.getStyle());
 				
 
-				if (terminal.style.isometric === "true" || parentIsometric)
+				if (terminal.style.isometric === "true" || (terminal.style.shape === "image" && parentIsometric))
 				{
 					// Requires an array of arrays with x, y (0..1), an optional
 					// [perimeter (0 or 1), dx, and dy] eg. points=[[0,0,1,-10,10],[0,1,0],[1,1]]
