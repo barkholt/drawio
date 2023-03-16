@@ -166,6 +166,7 @@ Toolbar.prototype.init = function()
 		}));
 		
 		this.addDropDownArrow(this.edgeStyleMenu, 'geSprite-orthogonal', 44, 50, 0, 0, 22, -4);
+		//this.addDropDownArrow(this.edgeStyleMenu, 'geSprite-straight', 44, 50, 0, 0, 22, -4);
 	}
 
 	this.addSeparator();

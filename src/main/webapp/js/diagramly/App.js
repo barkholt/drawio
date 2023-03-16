@@ -1364,7 +1364,8 @@ App.main = function(callback, createUi)
 					{fill: '#ffe6cc', stroke: '#d79b00'}, {fill: '#fff2cc', stroke: '#d6b656'},
 					{fill: '#f8cecc', stroke: '#b85450'}, {fill: '#e1d5e7', stroke: '#9673a6'}]],
 					compressXml: false,
-					defaultPageVisible: false
+					defaultPageVisible: false,
+					defaultEdgeStyle: {'edgeStyle': null, strokeWidth:4, endArrow:"none", 'rounded': '0', 'jettySize': 'auto', 'orthogonalLoop': '1'}
 				
 				});
 			mxSettings.load();
@@ -2880,11 +2881,11 @@ App.prototype.appIconClicked = function(evt)
 	}
 	else if (mode == App.MODE_DEVICE)
 	{
-		this.openLink('https://get.draw.io/');
+		//this.openLink('https://get.draw.io/');
 	}
 	else
 	{
-		this.openLink('https://www.diagrams.net/');
+		//this.openLink('https://www.diagrams.net/');
 	}
 	
 	mxEvent.consume(evt);
@@ -6961,6 +6962,7 @@ App.prototype.updateHeader = function()
 	{
 		var logo = 'url(' + Editor.logoImage + ')';
 		this.appIcon = document.createElement('a');
+		this.appIcon.setAttribute("id", "app_icon");
 		this.appIcon.style.display = 'block';
 		this.appIcon.style.position = 'absolute';
 		this.appIcon.style.width = '32px';
@@ -6980,14 +6982,14 @@ App.prototype.updateHeader = function()
 			this.appIconClicked(evt);
 		}));
 		
-		var updateBackground = mxUtils.bind(this, function()
-		{
-			this.appIcon.style.backgroundColor = (!Editor.isDarkMode()) ? '#f08705' : '';
-		});
-
-		this.addListener('darkModeChanged', updateBackground);
-		updateBackground();
-
+		if (window.debug) {
+			var updateBackground = mxUtils.bind(this, function()
+			{
+				this.appIcon.style.backgroundColor = (!Editor.isDarkMode()) ? '#f08705' : '';
+			});
+			this.addListener('darkModeChanged', updateBackground);
+			updateBackground();
+		}
 		mxUtils.setPrefixedStyle(this.appIcon.style, 'transition', 'all 125ms linear');
 
 		mxEvent.addListener(this.appIcon, 'mouseover', mxUtils.bind(this, function()

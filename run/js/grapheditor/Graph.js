@@ -8985,7 +8985,7 @@ if (typeof mxVertexHandler !== 'undefined')
 				
 				let parentIsometric = terminal.cell.parent.style ? terminal.cell.parent.style.indexOf("isometric") !== -1 : false;
 				
-				console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints, parentIsometric, terminal.cell.getStyle());
+				//console.log("Graph.prototype.getAllConnectionConstraints", terminal, source, constraints, parentIsometric, terminal.cell.getStyle());
 				
 
 				if (terminal.style.isometric === "true" || (terminal.style.shape === "image" && parentIsometric))

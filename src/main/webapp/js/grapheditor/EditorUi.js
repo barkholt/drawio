@@ -889,6 +889,9 @@ EditorUi = function(editor, container, lightbox)
 							}
 						}
 					}
+					console.log("graph.currentEdgeStyle", graph.currentEdgeStyle);
+					console.log("graph.currentVertexStyle", graph.currentVertexStyle);
+					
 					if (keys[i] === 'isometric') {
 						console.log("Turn on isometric", values[i], typeof(values[i]));
 						console.log(graph);
