@@ -3787,7 +3787,6 @@
 	{
 		for (var i = 0; i < imgs.length; i++)
 		{
-			console.log("addLibraryEntry", imgs[i]);
 			var img = imgs[i];
 			var data = img.data;
 
@@ -3827,8 +3826,6 @@
 
 					let vertexTemplate = this.sidebar.createVertexTemplateFromCells(
 							cells, img.w, img.h, img.title || '', true, null, true);
-
-					console.log("vertexTemplate", vertexTemplate, cells);
 
 					content.appendChild(vertexTemplate);
 				}

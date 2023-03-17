@@ -3545,7 +3545,7 @@ TextFormatPanel.prototype.addFont = function(container)
 	var isometricOpt = this.createCellOption("Isometric text", 'isometric', 0,
 		null, null, null, ui.actions.get('isometricText'));
 	isometricOpt.style.fontWeight = 'bold';
-	extraPanel.appendChild(isometricOpt);
+	//extraPanel.appendChild(isometricOpt);
 
 
 	

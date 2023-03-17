@@ -261,7 +261,7 @@ mxStencilRegistry.allowEval = false;
 		{
 			this.addMenuItems(menu, ['new', 'open'], parent);
 			this.addSubmenu('openRecent', menu, parent);
-			this.addMenuItems(menu, ['-', 'synchronize', '-', 'save', 'saveAs', '-', 'import'], parent);
+			this.addMenuItems(menu, [/*'-', 'synchronize',*/ '-', 'save', 'saveAs', '-', 'import'], parent);
 			this.addSubmenu('exportAs', menu, parent);
 			menu.addSeparator(parent);
 			this.addSubmenu('embed', menu, parent);

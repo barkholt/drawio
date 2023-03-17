@@ -335,12 +335,12 @@ var SplashDialog = function(editorUi)
 		logo.src = IMAGE_PATH + '/onedrive-logo.svg';
 		service = mxResources.get('oneDrive');
 	}
-	else if (editorUi.mode == App.MODE_GITHUB)
+	else if (window.debug && editorUi.mode == App.MODE_GITHUB)
 	{
 		logo.src = IMAGE_PATH + '/github-logo.svg';
 		service = mxResources.get('github');
 	}
-	else if (editorUi.mode == App.MODE_GITLAB)
+	else if (window.debug && editorUi.mode == App.MODE_GITLAB)
 	{
 		logo.src = IMAGE_PATH + '/gitlab-logo.svg';
 		service = mxResources.get('gitlab');
@@ -460,11 +460,11 @@ var SplashDialog = function(editorUi)
 	{
 		storage = mxResources.get('oneDrive');
 	}
-	else if (editorUi.mode == App.MODE_GITHUB)
+	else if (window.debug && editorUi.mode == App.MODE_GITHUB)
 	{
 		storage = mxResources.get('github');
 	}
-	else if (editorUi.mode == App.MODE_GITLAB)
+	else if (window.debug && editorUi.mode == App.MODE_GITLAB)
 	{
 		storage = mxResources.get('gitlab');
 	}
@@ -2780,11 +2780,11 @@ var NewDialog = function(editorUi, compact, showName, callback, createOnly, canc
 	{
 		logo.src = IMAGE_PATH + '/onedrive-logo.svg';
 	}
-	else if (editorUi.mode == App.MODE_GITHUB)
+	else if (window.debug && editorUi.mode == App.MODE_GITHUB)
 	{
 		logo.src = IMAGE_PATH + '/github-logo.svg';
 	}
-	else if (editorUi.mode == App.MODE_GITLAB)
+	else if (window.debug && editorUi.mode == App.MODE_GITLAB)
 	{
 		logo.src = IMAGE_PATH + '/gitlab-logo.svg';
 	}
@@ -2826,11 +2826,11 @@ var NewDialog = function(editorUi, compact, showName, callback, createOnly, canc
 	{
 		ext = editorUi.oneDrive.extension;
 	}
-	else if (editorUi.mode == App.MODE_GITHUB && editorUi.gitHub != null)
+	else if (window.debug && editorUi.mode == App.MODE_GITHUB && editorUi.gitHub != null)
 	{
 		ext = editorUi.gitHub.extension;
 	}
-	else if (editorUi.mode == App.MODE_GITLAB && editorUi.gitLab != null)
+	else if (window.debug && editorUi.mode == App.MODE_GITLAB && editorUi.gitLab != null)
 	{
 		ext = editorUi.gitLab.extension;
 	}
@@ -4706,7 +4706,7 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 
 	if (!editorUi.isOfflineApp() && !editorUi.isOffline())
 	{
-		if (typeof window.DriveClient === 'function')
+		if (window.debug && typeof window.DriveClient === 'function')
 		{
 			var googleOption = document.createElement('option');
 			googleOption.setAttribute('value', App.MODE_GOOGLE);
@@ -4716,7 +4716,7 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 			addLogo(IMAGE_PATH + '/google-drive-logo.svg', mxResources.get('googleDrive'), App.MODE_GOOGLE, 'drive');
 		}
 		
-		if (typeof window.OneDriveClient === 'function')
+		if (window.debug && typeof window.OneDriveClient === 'function')
 		{
 			var oneDriveOption = document.createElement('option');
 			oneDriveOption.setAttribute('value', App.MODE_ONEDRIVE);
@@ -4731,7 +4731,7 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 			addLogo(IMAGE_PATH + '/onedrive-logo.svg', mxResources.get('oneDrive'), App.MODE_ONEDRIVE, 'oneDrive');
 		}
 
-		if (typeof window.DropboxClient === 'function')
+		if (window.debug && typeof window.DropboxClient === 'function')
 		{
 			var dropboxOption = document.createElement('option');
 			dropboxOption.setAttribute('value', App.MODE_DROPBOX);
@@ -4746,7 +4746,7 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 			addLogo(IMAGE_PATH + '/dropbox-logo.svg', mxResources.get('dropbox'), App.MODE_DROPBOX, 'dropbox');
 		}
 
-		if (editorUi.gitHub != null)
+		if (window.debug && editorUi.gitHub != null)
 		{
 			var gitHubOption = document.createElement('option');
 			gitHubOption.setAttribute('value', App.MODE_GITHUB);
@@ -4756,7 +4756,7 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 			addLogo(IMAGE_PATH + '/github-logo.svg', mxResources.get('github'), App.MODE_GITHUB, 'gitHub');
 		}
 		
-		if (editorUi.gitLab != null)
+		if (window.debug && editorUi.gitLab != null)
 		{
 			var gitLabOption = document.createElement('option');
 			gitLabOption.setAttribute('value', App.MODE_GITLAB);
@@ -4766,7 +4766,7 @@ var CreateDialog = function(editorUi, title, createFn, cancelFn, dlgTitle, btnLa
 			addLogo(IMAGE_PATH + '/gitlab-logo.svg', mxResources.get('gitlab'), App.MODE_GITLAB, 'gitLab');
 		}
 
-		if (typeof window.TrelloClient === 'function')
+		if (window.debug && typeof window.TrelloClient === 'function')
 		{
 			var trelloOption = document.createElement('option');
 			trelloOption.setAttribute('value', App.MODE_TRELLO);

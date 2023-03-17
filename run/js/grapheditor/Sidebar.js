@@ -702,7 +702,6 @@ Sidebar.prototype.addEntries = function(images)
 					
 					const vt = this.createVertexTemplate(s + 'image=' +
 						data, img.w, img.h, '', img.title || '', false, false, true);
-					console.log("vertex template", vt);
 					return vt;
 				}));
 			}

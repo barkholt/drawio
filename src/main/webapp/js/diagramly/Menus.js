@@ -68,6 +68,13 @@
 		var trelloEnabled = urlParams['tr'] == '1' && mxClient.IS_SVG && (document.documentMode == null ||
 			document.documentMode > 9);
 
+		if (!window.debug) {
+			googleEnabled = false;
+			dropboxEnabled = false;
+			oneDriveEnabled = false;
+			trelloEnabled = false;
+		}
+
 		if (!mxClient.IS_SVG && !editorUi.isOffline())
 		{
 			var img = new Image();
@@ -2819,7 +2826,7 @@
 			
 			menu.addSeparator(parent);
 			
-			if (editorUi.gitHub != null)
+			if (window.debug && editorUi.gitHub != null)
 			{
 				menu.addItem(mxResources.get('github') + '...', null, function()
 				{
@@ -2827,7 +2834,7 @@
 				}, parent);
 			}
 			
-			if (editorUi.gitLab != null)
+			if (window.debug && editorUi.gitLab != null)
 			{
 				menu.addItem(mxResources.get('gitlab') + '...', null, function()
 				{
@@ -2931,7 +2938,7 @@
 					this.addSubmenu('insert', menu, parent);
 				}
 
-				if (iw < 360  && urlParams['embed'] != '1' &&
+				if (window.debug && iw < 360  && urlParams['embed'] != '1' &&
 					editorUi.getServiceName() == 'draw.io')
 				{
 					this.addSubmenu('share', menu, parent);
@@ -3615,7 +3622,7 @@
 
 			menu.addSeparator(parent);
 			
-			if (editorUi.gitHub != null)
+			if (window.debug && editorUi.gitHub != null)
 			{
 				menu.addItem(mxResources.get('github') + '...', null, function()
 				{
@@ -3623,7 +3630,7 @@
 				}, parent);
 			}
 			
-			if (editorUi.gitLab != null)
+			if (window.debug && editorUi.gitLab != null)
 			{
 				menu.addItem(mxResources.get('gitlab') + '...', null, function()
 				{
@@ -3747,7 +3754,7 @@
 				
 				menu.addSeparator(parent);
 				
-				if (editorUi.gitHub != null)
+				if (window.debug && editorUi.gitHub != null)
 				{
 					menu.addItem(mxResources.get('github') + '...', null, function()
 					{
@@ -3755,7 +3762,7 @@
 					}, parent);
 				}
 				
-				if (editorUi.gitLab != null)
+				if (window.debug && editorUi.gitLab != null)
 				{
 					menu.addItem(mxResources.get('gitlab') + '...', null, function()
 					{
@@ -3850,7 +3857,7 @@
 				
 				menu.addSeparator(parent);
 				
-				if (editorUi.gitHub != null)
+				if (window.debug && editorUi.gitHub != null)
 				{
 					menu.addItem(mxResources.get('github') + '...', null, function()
 					{
@@ -3858,7 +3865,7 @@
 					}, parent);
 				}
 				
-				if (editorUi.gitLab != null)
+				if (window.debug && editorUi.gitLab != null)
 				{
 					menu.addItem(mxResources.get('gitlab') + '...', null, function()
 					{
@@ -4294,7 +4301,7 @@
 					editorUi.menus.addSubmenu('appearance', menu, parent);
 				}
 
-				if (urlParams['embed'] != '1' && urlParams['extAuth'] != '1' &&
+				if (window.debug && urlParams['embed'] != '1' && urlParams['extAuth'] != '1' &&
 					editorUi.mode != App.MODE_ATLAS)
 				{
 					editorUi.menus.addSubmenu('theme', menu, parent);
@@ -4357,7 +4364,7 @@
 					editorUi.menus.addSubmenu('appearance', menu, parent);
 				}
 
-				if (urlParams['embed'] != '1')
+				if (window.debug && urlParams['embed'] != '1')
 				{
 					this.addSubmenu('theme', menu, parent);
 				}
@@ -4513,7 +4520,8 @@
 					menu.addSeparator(parent);
 				}
 
-				editorUi.menus.addMenuItems(menu, ['share'], parent);
+				if (window.debug)
+					editorUi.menus.addMenuItems(menu, ['share'], parent);
 			}
 
 			this.addMenuItem(menu, 'publishLink', parent, null,
@@ -4541,7 +4549,7 @@
 			
 			if (mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
 			{
-				editorUi.menus.addMenuItems(menu, ['new', 'open', '-', 'synchronize',
+				editorUi.menus.addMenuItems(menu, ['new', 'open', /*'-', 'synchronize',*/
 					'-', 'save', 'saveAs', '-'], parent);
 			}
 			else if (editorUi.mode == App.MODE_ATLAS)
@@ -4792,7 +4800,7 @@
 					editorUi.menus.addMenuItems(menu, ['saveAs'], parent);
 				}
 
-				if (!mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
+				if (window.debug && !mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
 					file != null && (file.constructor != LocalFile ||
 					file.fileHandle != null))
 				{
@@ -4809,7 +4817,7 @@
 						this.addMenuItem(menu, 'publishLink', parent, null, null, mxResources.get('publish') + '...');
 					}
 
-					if (Editor.currentTheme != 'simple' &&
+					if (window.debug && Editor.currentTheme != 'simple' &&
 						(file.constructor == DriveFile ||
 						file.constructor == GitHubFile ||
 						file.constructor == OneDriveFile))
@@ -4893,10 +4901,11 @@
 					{
 						this.addMenuItems(menu, ['exportOptionsDisabled'], parent);
 					}
+					if (window.debug)
+						this.addMenuItems(menu, ['save', '-', 'share'], parent);
 					
-					this.addMenuItems(menu, ['save', '-', 'share'], parent);
-					
-					var item = this.addMenuItem(menu, 'synchronize', parent);
+					if (window.debug)
+						var item = this.addMenuItem(menu, 'synchronize', parent);
 					
 					if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP || EditorUi.isElectronApp)
 					{
@@ -4924,7 +4933,7 @@
 				}
 				else
 				{
-					if (!mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
+					if (window.debug && !mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
 						file != null && (file.constructor != LocalFile ||
 						file.fileHandle != null))
 					{	
@@ -4939,7 +4948,7 @@
 					
 					this.addMenuItems(menu, ['-', 'save', 'saveAs', '-'], parent);
 					
-					if (!mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
+					if (window.debug && !mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
 						editorUi.getServiceName() == 'draw.io' &&
 						!editorUi.isOfflineApp() && file != null)
 					{
@@ -4979,10 +4988,13 @@
 				
 				menu.addSeparator(parent);
 				this.addSubmenu('importFrom', menu, parent);
-				this.addSubmenu('exportAs', menu, parent);
-				menu.addSeparator(parent);
-				this.addSubmenu('embed', menu, parent);
-				this.addSubmenu('publish', menu, parent);
+				if (window.debug)
+				{
+					this.addSubmenu('exportAs', menu, parent);
+					menu.addSeparator(parent);
+					this.addSubmenu('embed', menu, parent);
+					this.addSubmenu('publish', menu, parent);
+				}
 				menu.addSeparator(parent);
 				this.addSubmenu('newLibrary', menu, parent);
 				this.addSubmenu('openLibraryFrom', menu, parent);
@@ -5008,7 +5020,7 @@
 				this.addMenuItems(menu, ['-', 'pageSetup'], parent);
 				
 				// Cannot use print in standalone mode on iOS as we cannot open new windows
-				if (!mxClient.IS_IOS || !navigator.standalone)
+				if (window.debug && (!mxClient.IS_IOS || !navigator.standalone))
 				{
 					this.addMenuItems(menu, ['print'], parent);
 				}

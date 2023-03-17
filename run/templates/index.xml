@@ -44,15 +44,16 @@
   <add>Uhttps://jgraph.github.io/drawio-libs/libs/fortinet/Fortinet_Vertical_Related.xml</add>
   <add>Uhttps://jgraph.github.io/drawio-libs/libs/fortinet/Fortinet_VM_Components.xml</add>
 </clibs>
-<template url="basic/classes.xml" title="classDiagram" libs="general;uml" tags="classDiagram;Classes"/>
+<!--template url="basic/classes.xml" title="classDiagram" libs="general;uml" tags="classDiagram;Classes"/>
 <template url="basic/flowchart.xml" title="flowchart" libs="general;flowchart" tags="flowchart;Flowchart"/>
 <template url="basic/orgchart.xml" title="orgChart" libs="general;basic;arrows" tags="orgChart;Orgchart"/>
 <template url="basic/swimlanes.xml" title="swimlaneDiagram" libs="general;flowchart;bpmn" tags="swimlaneDiagram;Swimlanes"/>
 <template url="basic/erd.xml" title="entityRelationshipDiagram" libs="general;er" tags="entityRelationshipDiagram;Erd"/>
 <template url="basic/sequence.xml" title="Sequence Diagram" tags="Sequence;Diagram;Sequence"/>
 <template url="basic/kanban.xml" title="Simple Kanban Board" tags="Simple;Kanban;Board;Kanban"/>
-<template url="basic/cross.xml" title="Cross-Functional Flowchart" tags="Cross-Functional;Flowchart;Cross"/>
-<template url="business/accd.xml" name="Accd" libs="general" tags="Accd"/>
+<template url="basic/cross.xml" title="Cross-Functional Flowchart" tags="Cross-Functional;Flowchart;Cross"/-->
+
+<!--template url="business/accd.xml" name="Accd" libs="general" tags="Accd"/>
 <template url="business/archimate.xml" name="Archimate" libs="general;archimate3" tags="Archimate"/>
 <template url="business/bpmn.xml" name="Bpmn" libs="general;bpmn" tags="Bpmn"/>
 <template url="business/business_model_1.xml" name="Business model 1" libs="general;signs" tags="Business;model"/>
@@ -194,5 +195,6 @@
 <template url="layout/bootstrap.xml" name="Bootstrap" tags="Bootstrap"/>
 <template url="layout/wireframe_1.xml" name="Wireframe 1" tags="Wireframe"/>
 <template url="layout/wireframe_2.xml" name="Wireframe 2" tags="Wireframe"/>
-<template url="software/data_flow_1.xml" name="Data flow 1" tags="Data;flow"/>
+<template url="software/data_flow_1.xml" name="Data flow 1" tags="Data;flow"/-->
+
 </templates>

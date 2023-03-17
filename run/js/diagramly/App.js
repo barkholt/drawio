@@ -1350,27 +1350,31 @@ App.main = function(callback, createUi)
 							]
 						}
 					],	
-					//enabledLibraries: ["id_chemicals.0"],
-					//defaultLibraries: ["id_chemicals.0"],
-					//customLibraries: ["id_chemicals.0"],
-					//defaultCustomLibraries: ["id_chemicals.0"],
 					enableCustomLibraries: true,
 
+					
 
-					presetColors: ["ff0000", "00ff00", "0000ff"],
-					defaultColors: ["ffff00", "00ffff", "ff00ff"],
-					defaultColorSchemes: [[{fill: '', stroke: ''}, {fill: '#ff0000', stroke: '#00ff00', font: '#333333'},
-					{fill: '#dae8fc', stroke: '#6c8ebf'}, {fill: '#d5e8d4', stroke: '#82b366'},
-					{fill: '#ffe6cc', stroke: '#d79b00'}, {fill: '#fff2cc', stroke: '#d6b656'},
-					{fill: '#f8cecc', stroke: '#b85450'}, {fill: '#e1d5e7', stroke: '#9673a6'}]],
+
+					presetColors: ["66bc73", "7bdaf0", "ad6161", "ffec00", "1b75b3", "bba35b"],
+					defaultColors: ["66bc73", "7bdaf0", "ad6161", "ffec00", "1b75b3", "bba35b"],
+					defaultColorSchemes: [[
+						{fill: '#ffffff', stroke: '#ffffff'}, 
+						{fill: '#66bc73', stroke: '#66bc73'},
+						{fill: '#7bdaf0', stroke: '#7bdaf0'}, 
+						{fill: '#ad6161', stroke: '#ad6161'},
+						{fill: '#ffec00', stroke: '#ffec00'}, 
+						{fill: '#1b75b3', stroke: '#1b75b3'},
+						{fill: '#bba35b', stroke: '#bba35b'}, 
+						{fill: '#000000', stroke: '#000000'}
+					]],
+
 					compressXml: false,
 					defaultPageVisible: false,
 					defaultEdgeStyle: {'edgeStyle': null, strokeWidth:4, endArrow:"none", 'rounded': '0', 'jettySize': 'auto', 'orthogonalLoop': '1'}
 				
 				});
+			window.uiTheme = "";
 			mxSettings.load();
-			//mxSettings.addCustomLibrary("id_chemicals.0");
-
 			
 			doMain();
 		}
@@ -1586,6 +1590,9 @@ App.prototype.init = function()
 			(urlParams['gh'] != '0' && (urlParams['embed'] != '1' ||
 			urlParams['gh'] == '1')) ? new GitHubClient(this) : null;
 	
+	if (!window.debug)
+		this.github = null;
+
 	if (this.gitHub != null)
 	{
 		this.gitHub.addListener('userChanged', mxUtils.bind(this, function()
@@ -1611,6 +1618,9 @@ App.prototype.init = function()
 		(urlParams['gl'] != '0' && (urlParams['embed'] != '1' ||
 		urlParams['gl'] == '1')) ? new GitLabClient(this) : null;
 
+	if (!window.debug)
+		this.gitlab = null;
+
 	if (this.gitLab != null)
 	{
 		this.gitLab.addListener('userChanged', mxUtils.bind(this, function()
@@ -1623,13 +1633,14 @@ App.prototype.init = function()
 	/**
 	 * Lazy-loading for individual backends
 	 */
-	if (urlParams['embed'] != '1' || urlParams['od'] == '1')
+	if (window.debug && urlParams['embed'] != '1' || urlParams['od'] == '1')
 	{
 		/**
 		 * Creates onedrive client if all required libraries are available.
 		 */
 		var initOneDriveClient = mxUtils.bind(this, function()
 		{
+
 			if (typeof OneDrive !== 'undefined')
 			{
 				/**
@@ -1658,7 +1669,7 @@ App.prototype.init = function()
 	/**
 	 * Lazy-loading for Trello
 	 */
-	if (urlParams['embed'] != '1' || urlParams['tr'] == '1')
+	if (window.debug && urlParams['embed'] != '1' || urlParams['tr'] == '1')
 	{
 		/**
 		 * Creates Trello client if all required libraries are available.
@@ -1701,7 +1712,7 @@ App.prototype.init = function()
 	/**
 	 * Creates drive client with all required libraries are available.
 	 */
-	if (urlParams['embed'] != '1' || urlParams['gapi'] == '1')
+	if (window.debug && urlParams['embed'] != '1' || urlParams['gapi'] == '1')
 	{
 		var initDriveClient = mxUtils.bind(this, function()
 		{
@@ -1748,7 +1759,7 @@ App.prototype.init = function()
 		initDriveClient();
 	}
 
-	if (urlParams['embed'] != '1' || urlParams['db'] == '1')
+	if (window.debug && urlParams['embed'] != '1' || urlParams['db'] == '1')
 	{
 		/**
 		 * Creates dropbox client if all required libraries are available.
