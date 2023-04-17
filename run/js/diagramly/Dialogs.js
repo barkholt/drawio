@@ -269,7 +269,7 @@ var StorageDialog = function(editorUi, fn, rowLimit)
 	{
 		window.setTimeout(function()
 		{
-			if (editorUi.drive == null)
+			if (editorUi.drive == null && window.debug)
 			{
 				// To check for Disconnect plugin in chrome use mxClient.IS_GC and check for URL:
 				// chrome-extension://jeoacafpbcihiomhlakheieifhpjdfeo/scripts/vendor/jquery/jquery-2.0.3.min.map
