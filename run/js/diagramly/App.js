@@ -1348,6 +1348,19 @@ App.main = function(callback, createUi)
 									]
 								}
 							]
+						},
+						{
+							title: {main: "Explainer"},
+							entries:
+							[ 
+								{
+									id: "id_explainer",
+									title: {main: "Explainer"},
+									libs:[
+										{title: {main: "Explainer"}, url: "/Explainer.xml"}
+									]
+								}
+							]
 						}
 					],	
 					enableCustomLibraries: true,

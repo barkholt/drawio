@@ -351,7 +351,6 @@
 	 */
 	Sidebar.prototype.isEntryVisible = function(key)
 	{
-		console.log("isEntryVisible", key);
 		if (key == '.scratchpad')
 		{
 			return this.editorUi.scratchpad != null;
@@ -1288,7 +1287,8 @@
 			"id_facilities",
 			"id_machines",
 			"id_rawmaterials",
-			"id_water"]);
+			"id_water",
+			"id_explainer"]);
 		
 		if (this.createdSearchIndex != null)
 		{

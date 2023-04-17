@@ -3243,7 +3243,6 @@
 	 */
 	EditorUi.prototype.libraryLoaded = function(file, images, optionalTitle, expand)
 	{
-		console.log("Library loaded", file);
 		if (this.sidebar == null)
 		{
 			return;
