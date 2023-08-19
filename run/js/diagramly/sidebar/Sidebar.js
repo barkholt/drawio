@@ -1288,6 +1288,7 @@
 			"id_machines",
 			"id_rawmaterials",
 			"id_water",
+			"id_consumption",
 			"id_explainer"]);
 		
 		if (this.createdSearchIndex != null)

@@ -1336,6 +1336,25 @@ App.main = function(callback, createUi)
 								}
 							]
 						},
+
+
+						{
+							title: {main: "Consumption"},
+							entries:
+							[ 
+								{
+									id: "id_consumption",
+									title: {main: "Consumption"},
+									libs:[
+										{title: {main: "Consumption"}, url: "/Consumption.xml"}
+									]
+								}
+							]
+						},
+
+
+
+						
 						{
 							title: {main: "Water"},
 							entries:
